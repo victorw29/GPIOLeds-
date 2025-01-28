@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
@@ -93,7 +92,6 @@ void mostrarFrame(uint8_t frame[5][5]) {
 }
 
 void mostrarAnimacaoT1() {
-  // Definindo os frames para a animação de coração pulsante (expansão e contração).
   int frame0[5][5][3] = {
     {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
     {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 255}},
@@ -144,79 +142,8 @@ void mostrarAnimacaoT1() {
     {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 255}}
   };
 
-  // Array com todos os frames da animação.
    int (*animation[])[5][3] = {frame0, frame1, frame2, frame3, frame4, frame5, frame6};
 
-  void mostrarAnimacaoT4(void) {
-    // Frames da animação (exemplo: ondas de cor se movendo)
-    int frame0[5][5][3] = {
-        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
-        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}}
-    };
-
-    int frame1[5][5][3] = {
-        {{0, 0, 0},   {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {0, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
-        {{0, 0, 0},   {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {0, 0, 0}}
-    };
-
-    int frame2[5][5][3] = {
-        {{0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {0, 0, 0},   {0, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {0, 0, 0},   {0, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {0, 0, 0},   {0, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {0, 0, 0},   {0, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {0, 0, 0},   {0, 0, 0}}
-    };
-
-    int frame3[5][5][3] = {
-        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
-        {{255, 0, 0}, {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {255, 0, 0}},
-        {{255, 0, 0}, {0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {255, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {255, 0, 0}},
-        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}}
-    };
-
-    int frame4[5][5][3] = {
-        {{0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}},
-        {{0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}},
-        {{0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}},
-        {{0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}},
-        {{0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}}
-    };
-
-    // Exemplo de iteração para processar os frames
-    // (adicione sua lógica de exibição aqui)
-
- int (*animation[])[5][3] = {
-    frame0,
-    frame1,
-    frame2,
-    frame3,
-    frame4,
-  };
-
-  for (int i = 0; i < 5; i++){
-    for(int linha = 0; linha < 5; linha++)
-    {
-    for(int coluna = 0; coluna < 5; coluna++)
-    {
-      int posicao = getIndex(linha, coluna);
-      npSetLED(posicao, animation[i][coluna][linha][0], animation[i][coluna][linha][1], animation[i][coluna][linha][2]);
-    }
-    }
-    npWrite();
-    sleep_ms(500);
-    Clear_ws2818
-();
-  }
-   
-}
-  // Loop para exibir cada frame num intervalo de 500 milissegundos.
   for (int i = 0; i < 7; i++) {
     for (int linha = 0; linha < 5; linha++) {
       for (int coluna = 0; coluna < 5; coluna++) {
@@ -224,14 +151,13 @@ void mostrarAnimacaoT1() {
         npSetLED(posicao, animation[i][linha][coluna][0], animation[i][linha][coluna][1], animation[i][linha][coluna][2]);
       }
     }
-    npWrite(); // Escreve os dados nos LEDs.
-    sleep_ms(500); // Pausa de 500 ms entre os frames.
+    npWrite(); 
+    sleep_ms(500); 
     Clear_ws2818
-(); // Limpa os LEDs.
+(); 
   }
 }
 
-//Funcao para mostrar animacao de onda
 void mostrarAnimacaoT2( void ){
 
   //Definicao dos frames da animacao
@@ -320,13 +246,11 @@ void mostrarAnimacaoT2( void ){
     {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
   };
   
-  //Array que junta todos os frames. Animacao completa
   int (*animation[])[5][3] = {
     frame0,frame1,frame2,frame3,frame4,frame5,frame6,frame7,frame8,frame9,frame10,frame11,
   };
   
 
-  //Loop para mostrar cada frame num intervalo de 500 milissegundos.
 
   for (int i = 0; i < 12; i++){
     for(int linha = 0; linha < 5; linha++)
@@ -339,13 +263,210 @@ void mostrarAnimacaoT2( void ){
     }
     npWrite();
     sleep_ms(500);
-    Clear_ws2818();
+    Clear_ws2818
+();
   }
 }
+void mostrarAnimacaoT3() {
+  int frame0[5][5][3] ={
+           {{255, 255, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 255, 255}},
+            {{0, 0, 0}, {255, 255, 255}, {0, 0, 0}, {255, 255, 255}, {0, 0, 0}},
+            {{0, 0, 0}, {0, 0, 0}, {255, 255, 255}, {0, 0, 0}, {0, 0, 0}},
+            {{0, 0, 0}, {255, 255, 255}, {0, 0, 0}, {255, 255, 255}, {0, 0, 0}},
+            {{255, 255, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 255, 255}}
+         };
+           int frame1[5][5][3] ={
+
+           {{255, 0, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 0, 255}},
+            {{0, 0, 0}, {255, 255, 255}, {0, 0, 0}, {255, 255, 255}, {0, 0, 0}},
+            {{0, 0, 0}, {0, 0, 0}, {255, 255, 255}, {0, 0, 0}, {0, 0, 0}},
+            {{0, 0, 0}, {255, 255, 255}, {0, 0, 0}, {255, 255, 255}, {0, 0, 0}},
+            {{255, 0, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 0, 255}}
+         };
+           int frame2[5][5][3] ={
+
+           {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+            {{0, 0, 0}, {255, 0, 255}, {0, 0, 0}, {255, 0, 255}, {0, 0, 0}},
+            {{0, 0, 0}, {0, 0, 0}, {255, 255, 255}, {0, 0, 0}, {0, 0, 0}},
+            {{0, 0, 0}, {255, 0, 255}, {0, 0, 0}, {255, 0, 255}, {0, 0, 0}},
+            {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+         };
+           int frame3[5][5][3] ={
+
+          {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+            {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+            {{0, 0, 0}, {0, 0, 0}, {255, 0, 255}, {0, 0, 0}, {0, 0, 0}},
+            {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+            {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+         };
+           int frame4[5][5][3] ={
+
+          {{255, 0, 255}, {255, 0, 255}, {255, 0, 255}, {255, 0, 255}, {255, 0, 255}},
+            {{255, 0, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 0, 255}},
+            {{255, 0, 255}, {0, 0, 0}, {255, 0, 255}, {0, 0, 0}, {255, 0, 255}},
+            {{255, 0, 255}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 0, 255}},
+            {{255, 0, 255}, {255, 0, 255}, {255, 0, 255}, {255, 0, 255}, {255, 0, 255}}
+        };
+        
+    int (*animation[])[5][3] = {
+    frame0,
+    frame1,
+    frame2,
+    frame3,
+    frame4,
+  };
+
+  for (int i = 0; i < 5; i++){
+    for(int linha = 0; linha < 5; linha++)
+    {
+    for(int coluna = 0; coluna < 5; coluna++)
+    {
+      int posicao = getIndex(linha, coluna);
+      npSetLED(posicao, animation[i][coluna][linha][0], animation[i][coluna][linha][1], animation[i][coluna][linha][2]);
+    }
+    }
+    npWrite();
+    sleep_ms(500);
+    Clear_ws2818
+();
+  }
+   
+}
+void mostrarAnimacaoT4(void) {
+    int frame0[5][5][3] = {
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}}
+    };
+
+    int frame1[5][5][3] = {
+        {{0, 0, 0},   {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {0, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
+        {{0, 0, 0},   {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {0, 0, 0}}
+    };
+
+    int frame2[5][5][3] = {
+        {{0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {0, 0, 0},   {0, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {0, 0, 0},   {0, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {0, 0, 0},   {0, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {0, 0, 0},   {0, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {0, 0, 0},   {0, 0, 0}}
+    };
+
+    int frame3[5][5][3] = {
+        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}},
+        {{255, 0, 0}, {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {255, 0, 0}},
+        {{255, 0, 0}, {0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {255, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {255, 0, 0}, {255, 0, 0}},
+        {{0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0},   {0, 0, 0}}
+    };
+
+    int frame4[5][5][3] = {
+        {{0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}},
+        {{0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}},
+        {{0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}},
+        {{0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}},
+        {{0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}, {0, 255, 0}}
+    };
+
+  
+ int (*animation[])[5][3] = {
+    frame0,
+    frame1,
+    frame2,
+    frame3,
+    frame4,
+  };
+
+  for (int i = 0; i < 5; i++){
+    for(int linha = 0; linha < 5; linha++)
+    {
+    for(int coluna = 0; coluna < 5; coluna++)
+    {
+      int posicao = getIndex(linha, coluna);
+      npSetLED(posicao, animation[i][coluna][linha][0], animation[i][coluna][linha][1], animation[i][coluna][linha][2]);
+    }
+    }
+    npWrite();
+    sleep_ms(500);
+    Clear_ws2818
+();
+  }
+   
+}
+
+void mostrarAnimacaoT5(void) {
+    int frame0[5][5][3] = {
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{0, 0, 0}, {0, 0, 0}, {255, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{0, 0, 0}, {0, 0, 0}, {255, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{0, 0, 0}, {0, 0, 0}, {255, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}}
+    };
+
+    int frame1[5][5][3] = {
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}},
+        {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 0, 0}},
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}},
+        {{255, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}}
+    };
+
+    int frame2[5][5][3] = {
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}},
+        {{255, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{255, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}}
+    };
+
+    int frame3[5][5][3] = {
+        {{255, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{255, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}},
+        {{255, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 0, 0}},
+        {{255, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 0, 0}}
+    };
+
+    int frame4[5][5][3] = {
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}},
+        {{255, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}},
+        {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 0, 0}},
+        {{255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}, {255, 0, 0}}
+    };
 
 
 
-// Animação feita por Davi
+ int (*animation[])[5][3] = {
+    frame0,
+    frame1,
+    frame2,
+    frame3,
+    frame4,
+  };
+
+  for (int i = 0; i < 5; i++){
+    for(int linha = 0; linha < 5; linha++)
+    {
+    for(int coluna = 0; coluna < 5; coluna++)
+    {
+      int posicao = getIndex(linha, coluna);
+      npSetLED(posicao, animation[i][coluna][linha][0], animation[i][coluna][linha][1], animation[i][coluna][linha][2]);
+    }
+    }
+    npWrite();
+    sleep_ms(500);
+    Clear_ws2818
+();
+  }
+   
+}
+
 void mostrarAnimacaoT6() {
     int frame0[5][5][3] = {
   
@@ -447,45 +568,131 @@ void mostrarAnimacaoT6() {
     sleep_ms(500);
     Clear_ws2818();
   }
-// Função para a animação de estrela
-void mostrarAnimacaoT3(void) {
-    // Frames da animação (estrela se formando)
-    Color frames[5][NUM_LEDS] = {
-        // Frame 1: Apenas o centro acende
-        {{0, 0, 0}, {0, 0, 0}, {255, 255, 0}, {0, 0, 0}, {0, 0, 0},
-         {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
-         {255, 255, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 255, 0},
-         {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
-         {0, 0, 0}, {0, 0, 0}, {255, 255, 0}, {0, 0, 0}, {0, 0, 0}},
-        // Frame 2: Acendem os braços principais
-        {{0, 0, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {0, 0, 0},
-         {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
-         {255, 255, 0}, {0, 0, 0}, {255, 255, 0}, {0, 0, 0}, {255, 255, 0},
-         {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
-         {0, 0, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {0, 0, 0}},
-        // Frame 3: Acendem os braços diagonais
-        {{255, 255, 0}, {0, 0, 0}, {255, 255, 0}, {0, 0, 0}, {255, 255, 0},
-         {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
-         {255, 255, 0}, {0, 0, 0}, {255, 255, 0}, {0, 0, 0}, {255, 255, 0},
-         {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
-         {255, 255, 0}, {0, 0, 0}, {255, 255, 0}, {0, 0, 0}, {255, 255, 0}},
-        // Frame 4: Estrela completa
-        {{255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0},
-         {255, 255, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 255, 0},
-         {255, 255, 0}, {0, 0, 0}, {255, 255, 0}, {0, 0, 0}, {255, 255, 0},
-         {255, 255, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 255, 0},
-         {255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0}},
-        // Frame 5: Estrela pisca
-        {{0, 0, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {0, 0, 0},
-         {255, 255, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 255, 0},
-         {255, 255, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 255, 0},
-         {255, 255, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {255, 255, 0},
-         {0, 0, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {0, 0, 0}}
+}
+
+void keypad_init() {
+    for (int i = 14; i < 22; i++) {
+        gpio_init( i );
+        if (i < 18)
+            gpio_set_dir(i, GPIO_OUT);  //Inicializa as portas 1 a 4 como saida
+        else
+            gpio_set_dir(i, GPIO_IN);   //Inicializa as portas 5 a 8 como entrada
+    }
+}
+
+// Função para obter a tecla pressionada do keypad
+char get_keypad_key() {
+    char tecla = 'X';
+    char keypadKeys[4][4] = {
+        {'1', '2', '3', 'A'},
+        {'4', '5', '6', 'B'},
+        {'7', '8', '9', 'C'},
+        {'*', '0', '#', 'D'}
     };
 
-    // Exibe os frames sequencialmente
-    for (int i = 0; i < 5; i++) {
-        display_frame(pio, sm, frames[i]);
-        sleep_ms(300);  // Atraso de 300ms entre frames
+    for (int i = 0; i < 4; i++) {
+        gpio_put( i + 14, true);  // Coloca as linhas em nível alto
+        for (int j = 0; j < 4; j++) {
+            if (gpio_get(18 + j)) {  // Verifica se a coluna está em nível alto
+                tecla = keypadKeys[i][j];  // A tecla pressionada
+            }
+        }
+        gpio_put(14 + i, false);  // Reseta as linhas
     }
+    
+    return tecla;
+}
+
+// função para configurar a cor dos LEDs com brilho ajustável
+void set_led_color(uint8_t r, uint8_t g, uint8_t b, uint8_t brightness) {
+    uint color[3] = {r * brightness / 100, g * brightness / 100, b * brightness / 100}; 
+    for (int i = 0; i < LED_COUNT; i++) {
+        npSetLED(i, color[0], color[1], color[2]);
+    }
+    npWrite(); // Atualiza os LEDs após configurar as cores
+}
+
+
+// animação da tecla 2 - alteração gradual de cores
+void play_animation_2() {
+    const int delay_ms = 100; // Delay entre frames (10 FPS)
+    const int brightness = 80; // Brilho de 80%
+
+    for (int frame = 0; frame < 5; frame++) {
+        switch (frame) {
+            case 0:
+                set_led_color(255, 0, 0, brightness); // Vermelho
+                break;
+            case 1:
+                set_led_color(0, 255, 0, brightness); // Verde
+                break;
+            case 2:
+                set_led_color(0, 0, 255, brightness); // Azul
+                break;
+            case 3:
+                set_led_color(255, 255, 0, brightness); // Amarelo
+                break;
+            case 4:
+                set_led_color(255, 0, 255, brightness); // Magenta
+                break;
+        }
+        sleep_ms(delay_ms); // Aguarda o próximo frame
+    }
+
+    // clear dos leds
+    Clear_ws2818
+();
+}
+int main() {
+    stdio_init_all();
+    init_ws2818(LED_PIN);  // Inicializa os LEDs
+    Clear_ws2818();        // Limpa os LEDs
+    keypad_init();         // Inicializa o teclado
+
+    // Loop infinito para exibir a animação continuamente.
+    while (true) {
+        char tecla = get_keypad_key();  // Obtém a tecla pressionada
+
+        npWrite();       // Atualiza os LEDs
+
+        // Verifica qual tecla foi pressionada e executa a animação correspondente
+        if (tecla == '0'){
+            mostrarAnimacaoT1();  // Exibe os frames do coração pulsante
+        } else if (tecla == '1'){
+            mostrarAnimacaoT2();
+        } else if (tecla == '2'){
+            mostrarAnimacaoT3();
+        } else if (tecla == '3'){
+            mostrarAnimacaoT4();
+        } else if (tecla == '4'){
+            mostrarAnimacaoT5();
+        } else if (tecla == '5'){
+            mostrarAnimacaoT6();
+        }
+
+        // Implementação das novas teclas
+        if (tecla == 'A') {
+          Clear_ws2818();  // Desliga todos os LEDs
+          npWrite();  // Atualiza os LEDs
+        }
+        else if (tecla == 'B') {
+          set_led_color(0, 0, 255, 100);  // Liga os LEDs na cor azul com 100% de brilho
+        }
+        else if (tecla == 'C') {
+          set_led_color(255, 0, 0, 80);   // Liga os LEDs na cor vermelha com 80% de brilho
+        }
+        else if (tecla == 'D') {
+          set_led_color(0, 255, 0, 50);   // Liga os LEDs na cor verde com 50% de brilho
+        }
+        else if (tecla == '#') {
+          set_led_color(255, 255, 255, 20);  // Liga os LEDs na cor branca com 20% de brilho
+        }
+
+
+        // Adicione mais animações se necessário, conforme os outros números ou teclas especiais.
+
+        sleep_ms(100);  // Pausa de 100 ms após a animação completa
+    }
+    
+  return 0;
 }
