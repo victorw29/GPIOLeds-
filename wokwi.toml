@@ -1,5 +1,0 @@
-[wokwi]
-
-version = 1
-firmware = "build/neopixel_pio.uf2"
-elf = "build/neopixel_pio.elf"
