@@ -656,17 +656,17 @@ int main() {
         npWrite();       // Atualiza os LEDs
 
         // Verifica qual tecla foi pressionada e executa a animação correspondente
-        if (tecla == '0'){
+        if (tecla == '1'){
             mostrarAnimacaoT1();  // Exibe os frames do coração pulsante
-        } else if (tecla == '1'){
-            mostrarAnimacaoT2();
         } else if (tecla == '2'){
-            mostrarAnimacaoT3();
+            mostrarAnimacaoT2();
         } else if (tecla == '3'){
-            mostrarAnimacaoT4();
+            mostrarAnimacaoT3();
         } else if (tecla == '4'){
-            mostrarAnimacaoT5();
+            mostrarAnimacaoT4();
         } else if (tecla == '5'){
+            mostrarAnimacaoT5();
+        } else if (tecla == '6'){
             mostrarAnimacaoT6();
         }
 
