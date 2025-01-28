@@ -227,4 +227,7 @@ git clone https://github.com/victorw29/Microcontroladores-GPIO
 
 - [Victor](https://github.com/victorw29)  
 - [Ana Beatriz](https://github.com/anabeatrizsse1)
-- 
+- [JonathanMatos](https://github.com/JonathanMatos25) (Função do teclado);
+- [PedroAlonso](https://github.com/pedroalonso19) (Função para ler as teclas);
+- [Davi](https://github.com/Pr0wer) (Função para tocar notas);
+- [ViniciusPaz](https://github.com/V1n1Paz) (Estrutura do código, função do buzzer);
