@@ -448,7 +448,7 @@ void mostrarAnimacaoT6() {
     Clear_ws2818();
   }
 // Função para a animação de estrela
-void mostrarAnimacaoT3(PIO pio, uint sm) {
+void mostrarAnimacaoT3(void) {
     // Frames da animação (estrela se formando)
     Color frames[5][NUM_LEDS] = {
         // Frame 1: Apenas o centro acende
