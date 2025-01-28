@@ -1,4 +1,4 @@
-# Projeto de Teclado Matricial 4x4 com Matriz de LEDs RGB e Buzzer
+# Tarefa Microcontroladores GPIO 2
 
 ## Descrição
 
@@ -218,8 +218,8 @@ git clone https://github.com/victorw29/Microcontroladores-GPIO
 
 ## Links Úteis
 
-- [Vídeo no YouTube](https://youtu.be/xHChZULWF2c)
-- [Projeto no Wokwi Simulator](https://wokwi.com/projects/420526874831393793)
+- [Vídeo no YouTube] https://youtu.be/G0SA6R6wgnY
+
 
 ---
 
@@ -227,7 +227,7 @@ git clone https://github.com/victorw29/Microcontroladores-GPIO
 
 - [Victor](https://github.com/victorw29)  
 - [Ana Beatriz](https://github.com/anabeatrizsse1)
-- [JonathanMatos](https://github.com/JonathanMatos25) (Função do teclado);
-- [PedroAlonso](https://github.com/pedroalonso19) (Função para ler as teclas);
-- [Davi](https://github.com/Pr0wer) (Função para tocar notas);
-- [ViniciusPaz](https://github.com/V1n1Paz) (Estrutura do código, função do buzzer);
+- [JonathanMatos](https://github.com/JonathanMatos25) 
+- [PedroAlonso](https://github.com/pedroalonso19) 
+- [Davi](https://github.com/Pr0wer) 
+- [ViniciusPaz](https://github.com/V1n1Paz) 
